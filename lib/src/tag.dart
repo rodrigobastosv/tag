@@ -4,9 +4,9 @@ import 'clippers/triangle_clipper.dart';
 
 class Tag extends StatefulWidget {
   Tag({
-    this.key,
-    this.child,
-    this.text,
+    Key key,
+    @required this.child,
+    @required this.text,
     this.textStyle,
     this.labelDecoration,
     this.color,
@@ -19,7 +19,6 @@ class Tag extends StatefulWidget {
     this.removeIcon,
   }) : super(key: key);
 
-  final Key key;
   final Widget child;
   final String text;
   final TextStyle textStyle;
@@ -73,7 +72,7 @@ class _TagState extends State<Tag> {
             ),
             Material(
               child: Container(
-                decoration: widget.labelDecoration.copyWith(
+                decoration: widget.labelDecoration?.copyWith(
                   color: widget.color,
                 ),
                 height: widget.tagHeight,
