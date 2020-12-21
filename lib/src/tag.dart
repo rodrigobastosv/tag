@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'clippers/triangle_clipper.dart';
 
-class Tag extends StatefulWidget {
+class Tag extends StatelessWidget {
   Tag({
     Key key,
     @required this.child,
@@ -16,7 +16,7 @@ class Tag extends StatefulWidget {
     this.cornerWidth = 10,
     this.spacing = 2,
     this.rightPadding = 0,
-    this.removeIcon,
+    this.isVisible = true,
   }) : super(key: key);
 
   final Widget child;
@@ -30,88 +30,45 @@ class Tag extends StatefulWidget {
   final double cornerWidth;
   final double spacing;
   final double rightPadding;
-  final Icon removeIcon;
-
-  @override
-  _TagState createState() => _TagState();
-}
-
-class _TagState extends State<Tag> {
-  bool isTagVisible;
-  OverlayEntry overlayEntry;
-
-  @override
-  void initState() {
-    isTagVisible = true;
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      overlayEntry = _createOverlayEntry();
-      Overlay.of(context).insert(overlayEntry);
-    });
-    super.initState();
-  }
-
-  OverlayEntry _createOverlayEntry() {
-    RenderBox renderBox = context.findRenderObject();
-    final offset = renderBox.localToGlobal(Offset.zero);
-
-    return OverlayEntry(
-      builder: (context) => Positioned(
-        right: offset.dx + widget.rightPadding,
-        bottom:
-            offset.dy - widget.spacing - widget.cornerHeight - widget.tagHeight,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            ClipPath(
-              clipper: TriangleClipper(),
-              child: Container(
-                color: widget.color,
-                height: widget.cornerHeight,
-                width: widget.cornerWidth,
-              ),
-            ),
-            Material(
-              child: Container(
-                decoration: widget.labelDecoration?.copyWith(
-                  color: widget.color,
-                ),
-                height: widget.tagHeight,
-                width: widget.tagWidth,
-                child: widget.removeIcon != null
-                    ? Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          SizedBox(width: 4),
-                          Expanded(
-                            child: Text(
-                              widget.text,
-                              style: widget.textStyle,
-                            ),
-                          ),
-                          IconButton(
-                            onPressed: () => overlayEntry.remove(),
-                            icon: widget.removeIcon,
-                            color: widget.textStyle?.color,
-                          ),
-                        ],
-                      )
-                    : Center(
-                        child: Text(
-                          widget.text,
-                          style: widget.textStyle,
-                        ),
-                      ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
+  final bool isVisible;
 
   @override
   Widget build(BuildContext context) {
-    return widget.child;
+    return Stack(
+      overflow: Overflow.visible,
+      children: [
+        child,
+        if (isVisible) Positioned(
+          right: rightPadding,
+          bottom: -spacing - cornerHeight - tagHeight,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              ClipPath(
+                clipper: TriangleClipper(),
+                child: Container(
+                  color: color,
+                  height: cornerHeight,
+                  width: cornerWidth,
+                ),
+              ),
+              Container(
+                decoration: labelDecoration?.copyWith(
+                  color: color,
+                ),
+                height: tagHeight,
+                width: tagWidth,
+                child: Center(
+                  child: Text(
+                    text,
+                    style: textStyle,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
   }
 }
