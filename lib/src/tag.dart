@@ -92,7 +92,7 @@ class _TagState extends State<Tag> {
                           IconButton(
                             onPressed: () => overlayEntry.remove(),
                             icon: widget.removeIcon,
-                            color: widget.textStyle.color,
+                            color: widget.textStyle?.color,
                           ),
                         ],
                       )
