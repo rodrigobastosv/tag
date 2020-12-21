@@ -104,5 +104,4 @@ There are many types of configurations that can be done to the Tag widget. You c
 
 For any suggestions or bug report please head to [issue tracker][tracker].
 
-[tracker]: https://github.com/rodrigobastosv/loading_overlay/issues
-[flutter_spinkit]: https://pub.dev/packages/flutter_spinkit
+[tracker]: https://github.com/rodrigobastosv/tag/issues
