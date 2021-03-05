@@ -1,15 +1,14 @@
 name: tag
 description: Tag is a widget that simplify the process of creating a tag for any given widget
-version: 1.2.0
+version: 2.0.0
 homepage: https://github.com/rodrigobastosv/tag
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: '>=2.12.0-0 <3.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
-
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

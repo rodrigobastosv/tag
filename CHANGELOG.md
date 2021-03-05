@@ -1,3 +1,6 @@
+# 2.0.0
+- Migrating to null safe
+
 # 1.2.0
 
 - Making API simpler and more reliable
