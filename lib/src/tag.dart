@@ -27,7 +27,11 @@ class Tag extends StatelessWidget {
 
   /// Style of the text
   final TextStyle? textStyle;
+
+  /// Decoration of the text label
   final BoxDecoration? labelDecoration;
+
+  /// Color of the tag
   final Color? color;
 
   /// Height of the tag
@@ -36,9 +40,16 @@ class Tag extends StatelessWidget {
   /// Width of the tag
   final double tagWidth;
 
+  /// Height of the corner
   final double cornerHeight;
+
+  /// Width of the corner
   final double cornerWidth;
+
+  /// Spacing of the tag text
   final double spacing;
+
+  /// Padding
   final double rightPadding;
 
   /// Wheter the tag is visible or not

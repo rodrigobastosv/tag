@@ -1,3 +1,6 @@
+# 2.0.0+1
+- Small adjusts
+- 
 # 2.0.0
 - Migrating to null safe
 
