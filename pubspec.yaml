@@ -1,6 +1,6 @@
 name: tag
 description: Tag is a widget that simplify the process of creating a tag for any given widget
-version: 2.0.0+1
+version: 2.0.0+2
 homepage: https://github.com/rodrigobastosv/tag
 
 environment:

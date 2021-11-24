@@ -1,3 +1,6 @@
+# 2.0.0+2
+- Adjusting README
+
 # 2.0.0+1
 - Small adjusts
 - 
